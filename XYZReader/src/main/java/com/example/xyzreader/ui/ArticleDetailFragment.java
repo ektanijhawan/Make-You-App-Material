@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -128,15 +129,34 @@ public class ArticleDetailFragment extends Fragment implements
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
-        mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
-                        .setType("text/plain")
-                        .setText("Some sample text")
-                        .getIntent(), getString(R.string.action_share)));
+
+        if(getActivity() != null) {
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        final String body = Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)).toString();
+                        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                        sharingIntent.setType("text/plain");
+                        sharingIntent.putExtra(Intent.EXTRA_TEXT, mCursor.getString(ArticleLoader.Query.TITLE) + "\n\n" + body);
+                        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                    }
+                });
             }
-        });
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        final String body = Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)).toString();
+                        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                        sharingIntent.setType("text/plain");
+                        sharingIntent.putExtra(Intent.EXTRA_TEXT, mCursor.getString(ArticleLoader.Query.TITLE) + "\n\n" + body);
+                        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                    }
+                });
+            }
+        }
+        mRootView.findViewById(R.id.pbLoading).setVisibility(View.VISIBLE);
 
         bindViews();
         updateStatusBar();
