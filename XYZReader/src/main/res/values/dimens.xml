@@ -10,5 +10,9 @@
     <dimen name="toolbar_height">180dp</dimen>
     <dimen name="imageview_height">300dp</dimen>
     <dimen name="view_height">112dp</dimen>
+    <dimen name="elevation">4dp</dimen>
+    <dimen name="iv_padding">3dp</dimen>
+    <dimen name="top_padding">4dp</dimen>
+    <dimen name="bottom_padding">28dp</dimen>
 
 </resources>

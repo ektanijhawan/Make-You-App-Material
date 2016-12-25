@@ -113,20 +113,7 @@ public class ArticleDetailFragment extends Fragment implements
             }
         });
 
-      /*  mScrollView = (ObservableScrollView) mRootView.findViewById(R.id.scrollview);
-        mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
-            @Override
-            public void onScrollChanged() {
-                mScrollY = mScrollView.getScrollY();
-                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
-                mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
-                updateStatusBar();
-            }
-        });
 
-
-        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
-        */
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mStatusBarColorDrawable = new ColorDrawable(0);
 

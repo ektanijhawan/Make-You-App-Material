@@ -21,7 +21,6 @@
                 android:layout_marginRight="@dimen/list_toolbar_side_margin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                  android:background="@color/colorPrimaryDark"
                 >
 
                 <ImageView
@@ -29,7 +28,8 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/logo"
                     android:layout_gravity="bottom"
-                    android:contentDescription="@string/app_name" />
+                    android:contentDescription="@string/app_name"
+                    android:paddingBottom="@dimen/iv_padding"/>
 
             </android.support.v7.widget.Toolbar>
 
@@ -40,7 +40,8 @@
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view"
@@ -48,10 +49,10 @@
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:scrollbarStyle="outsideOverlay"
-                android:paddingTop="70dp"
                 android:paddingLeft="@dimen/list_side_margin"
                 android:paddingRight="@dimen/list_side_margin"
-                android:paddingBottom="28dp" />
+                android:paddingBottom="28dp"
+                android:paddingTop="4dp"/>
         </android.support.v4.widget.SwipeRefreshLayout>
 
 
