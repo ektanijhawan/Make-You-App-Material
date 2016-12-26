@@ -54,6 +54,7 @@
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+
                 <ProgressBar
                     android:id="@+id/pbLoading"
                     style="?android:attr/progressBarStyle"
